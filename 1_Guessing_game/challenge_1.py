@@ -67,7 +67,7 @@ def check_given_number(number):
     global game_is_on
 
     if number == drawn_number:
-        game_is_on = True
+        game_is_on = False
         print(f"You've won! The number was {drawn_number}.")
     elif number > drawn_number:
         print("Your number is too high! Let's try one more time.")

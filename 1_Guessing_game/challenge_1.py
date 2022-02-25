@@ -16,6 +16,7 @@ drawn_number = 0
 number_choosed_by_player = 0
 is_player_input_correct = False
 game_is_on = True
+number_of_player_steps = 0
 
 
 def set_game_range(lower_limit=0, upper_limit=100):
@@ -36,9 +37,11 @@ def input_range():
 def input_number():
     global number_choosed_by_player
     global is_player_input_correct
+    global number_of_player_steps
 
     while not is_player_input_correct:
         number_choosed_by_player = input("Guess what number is drawn [0-100]: ")
+        number_of_player_steps += 1
         check_player_input_correctness(number_choosed_by_player)
     print(f"Ok- so you choose {number_choosed_by_player} !")
     is_player_input_correct = False
@@ -75,9 +78,16 @@ def check_given_number(number):
         print("Your number is too low! Let's try one more time.")
 
 
+def show_scores():
+    global number_of_player_steps
+
+    print(f"You managed to finish the game in {number_of_player_steps} steps. Congrats!")
+
+
 def guessing_game():
     while game_is_on:
         check_given_number(input_number())
+    show_scores()
 
 
 if __name__ == "__main__":

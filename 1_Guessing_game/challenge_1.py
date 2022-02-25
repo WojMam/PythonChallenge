@@ -16,8 +16,8 @@ gameLowerLimit = 0
 gameUpperLimit = 0
 drawnNumber = 0
 numberChoosedByPlayer = 0
-isPlayerInputCorrect = FALSE
-gameIsOn = TRUE
+isPlayerInputCorrect = False
+gameIsOn = True
 
 def setGameRange(lowerLimit = 0, upperLimit = 100):
     global gameLowerLimit
@@ -36,11 +36,11 @@ def inputNumber():
     global numberChoosedByPlayer
     global isPlayerInputCorrect
 
-    while isPlayerInputCorrect==FALSE:
+    while isPlayerInputCorrect==False:
         numberChoosedByPlayer = input("Guess what number is drawn [0-100]: ")
         checkPlayerInputCorrectness(numberChoosedByPlayer)
     print(f"Ok- so you choose {numberChoosedByPlayer} !")
-    isPlayerInputCorrect=FALSE
+    isPlayerInputCorrect=False
     return int(numberChoosedByPlayer)
 
 def checkPlayerInputCorrectness(playerInput):
@@ -51,20 +51,20 @@ def checkPlayerInputCorrectness(playerInput):
     try:
         number = int(playerInput)
         if gameLowerLimit <= number <= gameUpperLimit:
-            isPlayerInputCorrect = TRUE
+            isPlayerInputCorrect = True
         else:
             print("You choose number that is not in the game range!")
-            isPlayerInputCorrect = FALSE
+            isPlayerInputCorrect = False
     except ValueError:
         print("It is not a number!")
-        isPlayerInputCorrect = FALSE
+        isPlayerInputCorrect = False
 
 def checkGivenNumber(number):
     global drawnNumber
     global gameIsOn
 
     if number == drawnNumber:
-        gameIsOn = FALSE
+        gameIsOn = True
         print(f"You've won! The number was {drawnNumber}.")
     elif number > drawnNumber:
         print("Your number is too high! Let's try one more time.")
@@ -72,7 +72,7 @@ def checkGivenNumber(number):
         print("Your number is too low! Let's try one more time.")
 
 def guessingGame():
-    while(gameIsOn==TRUE):
+    while(gameIsOn==True):
         checkGivenNumber(inputNumber())
 
 

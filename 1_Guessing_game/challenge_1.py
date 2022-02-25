@@ -1,11 +1,11 @@
 """
-Aplikacja konsolowa "zgadnij liczbę" 
+Console Application: Guess the number
 
-Aplikacja losuje liczbę (przedział wprowadza uytkownik).
-Uzytkownik zgaduje liczbe, a aplikacja podpowiada 
-czy liczba jest za mala/ za duza.
+The number is randomly choosed (user can define the boundaries).
+User guess the number and application suggest whether the number
+should be lesser or bigger.
 
-Wynikiem działania aplikacji jest wyświetlany wynik i statystyki.
+Application outcome is the information about score and statistics.
 """
 
 import random

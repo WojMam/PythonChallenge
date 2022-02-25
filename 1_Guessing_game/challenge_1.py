@@ -8,9 +8,7 @@ czy liczba jest za mala/ za duza.
 Wynikiem działania aplikacji jest wyświetlany wynik i statystyki.
 """
 
-from pickle import FALSE, TRUE
 import random
-import sys
 
 gameLowerLimit = 0
 gameUpperLimit = 0

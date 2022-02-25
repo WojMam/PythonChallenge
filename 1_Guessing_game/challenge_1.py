@@ -12,6 +12,7 @@ import random
 
 game_lower_limit = 0
 game_upper_limit = 0
+game_level="easy"
 drawn_number = 0
 number_choosed_by_player = 0
 is_player_input_correct = False
@@ -29,18 +30,48 @@ def set_game_range(lower_limit=0, upper_limit=100):
     drawn_number = random.randint(lower_limit, upper_limit)
 
 
-def input_range():
-    # TODO
-    pass
+def level_picker():
+    global game_lower_limit
+    global game_upper_limit
+    global game_level
+
+    print("There are 3 possible hard levels to choose: easy, medium and hard.")
+    while True:
+        print("Choose the game level by typing 'easy', 'medium' or 'hard'.")
+        level_choosed_by_player = input("Choose the game level: ")
+        match level_choosed_by_player:
+            case "easy":
+                set_game_range()
+                game_level="easy"
+                print(f"Ok! Then Easy it is! Guessing number range is set beetween {game_lower_limit} and {game_upper_limit}.")
+                break
+            case "medium":
+                set_game_range(0,10000)
+                game_level="medium"
+                print(f"Ok! Then Medium it is! Guessing number range is set beetween {game_lower_limit} and {game_upper_limit}.")
+                break
+            case "hard":
+                set_game_range(-9999,9999)
+                game_level="hard"
+                print(f"Ok! Then Hard it is!")
+                break
+            case _:
+                print("Invalid level. Please try again.")
+                continue
 
 
 def input_number():
+    global game_lower_limit
+    global game_upper_limit
     global number_choosed_by_player
     global is_player_input_correct
     global number_of_player_steps
 
     while not is_player_input_correct:
-        number_choosed_by_player = input("Guess what number is drawn [0-100]: ")
+        if game_level=="hard":
+            number_choosed_by_player = input(f"Guess what number is drawn: ")
+        else:
+            number_choosed_by_player = input(f"Guess what number is drawn [{game_lower_limit}-{game_upper_limit}]: ")
         number_of_player_steps += 1
         check_player_input_correctness(number_choosed_by_player)
     print(f"Ok- so you choose {number_choosed_by_player} !")
@@ -91,5 +122,5 @@ def guessing_game():
 
 
 if __name__ == "__main__":
-    set_game_range()
+    level_picker()
     guessing_game()

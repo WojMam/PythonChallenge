@@ -10,70 +10,76 @@ Wynikiem działania aplikacji jest wyświetlany wynik i statystyki.
 
 import random
 
-gameLowerLimit = 0
-gameUpperLimit = 0
-drawnNumber = 0
-numberChoosedByPlayer = 0
-isPlayerInputCorrect = False
-gameIsOn = True
+game_lower_limit = 0
+game_upper_limit = 0
+drawn_number = 0
+number_choosed_by_player = 0
+is_player_input_correct = False
+game_is_on = True
 
-def setGameRange(lowerLimit = 0, upperLimit = 100):
-    global gameLowerLimit
-    global gameUpperLimit
-    global drawnNumber
-    
-    gameLowerLimit = lowerLimit
-    gameUpperLimit = upperLimit
-    drawnNumber = random.randint(lowerLimit, upperLimit)
 
-def inputRange():
-    #TODO
+def set_game_range(lower_limit=0, upper_limit=100):
+    global game_lower_limit
+    global game_upper_limit
+    global drawn_number
+
+    game_lower_limit = lower_limit
+    game_upper_limit = upper_limit
+    drawn_number = random.randint(lower_limit, upper_limit)
+
+
+def input_range():
+    # TODO
     pass
 
-def inputNumber():
-    global numberChoosedByPlayer
-    global isPlayerInputCorrect
 
-    while isPlayerInputCorrect==False:
-        numberChoosedByPlayer = input("Guess what number is drawn [0-100]: ")
-        checkPlayerInputCorrectness(numberChoosedByPlayer)
-    print(f"Ok- so you choose {numberChoosedByPlayer} !")
-    isPlayerInputCorrect=False
-    return int(numberChoosedByPlayer)
+def input_number():
+    global number_choosed_by_player
+    global is_player_input_correct
 
-def checkPlayerInputCorrectness(playerInput):
-    global gameUpperLimit
-    global gameLowerLimit
-    global isPlayerInputCorrect
+    while not is_player_input_correct:
+        number_choosed_by_player = input("Guess what number is drawn [0-100]: ")
+        check_player_input_correctness(number_choosed_by_player)
+    print(f"Ok- so you choose {number_choosed_by_player} !")
+    is_player_input_correct = False
+    return int(number_choosed_by_player)
+
+
+def check_player_input_correctness(player_input):
+    global game_upper_limit
+    global game_lower_limit
+    global is_player_input_correct
 
     try:
-        number = int(playerInput)
-        if gameLowerLimit <= number <= gameUpperLimit:
-            isPlayerInputCorrect = True
+        number = int(player_input)
+        if game_lower_limit <= number <= game_upper_limit:
+            is_player_input_correct = True
         else:
             print("You choose number that is not in the game range!")
-            isPlayerInputCorrect = False
+            is_player_input_correct = False
     except ValueError:
         print("It is not a number!")
-        isPlayerInputCorrect = False
+        is_player_input_correct = False
 
-def checkGivenNumber(number):
-    global drawnNumber
-    global gameIsOn
 
-    if number == drawnNumber:
-        gameIsOn = True
-        print(f"You've won! The number was {drawnNumber}.")
-    elif number > drawnNumber:
+def check_given_number(number):
+    global drawn_number
+    global game_is_on
+
+    if number == drawn_number:
+        game_is_on = True
+        print(f"You've won! The number was {drawn_number}.")
+    elif number > drawn_number:
         print("Your number is too high! Let's try one more time.")
     else:
         print("Your number is too low! Let's try one more time.")
 
-def guessingGame():
-    while(gameIsOn==True):
-        checkGivenNumber(inputNumber())
+
+def guessing_game():
+    while game_is_on:
+        check_given_number(input_number())
 
 
 if __name__ == "__main__":
-    setGameRange()
-    guessingGame()
+    set_game_range()
+    guessing_game()

@@ -1,42 +1,36 @@
 # Python Roadmap - WM
-## _My way to learn Python, by examples_
+## _My way to learn Python, one example at a time_
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at neque sit amet urna ullamcorper suscipit eu sit amet tellus. Integer pharetra justo at mauris facilisis hendrerit. Pellentesque eleifend congue diam, a ullamcorper diam posuere sit amet. Etiam rhoncus velit ante, ut facilisis nisi bibendum in.
+TODO
 
 ## Topics
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam ultricies mauris a dolor euismod, quis tincidunt quam viverra. In luctus elit in pharetra feugiat: 
+This is the list of the applications that are done until now:
 
-1. First
-2. Second
-3. Third
+1. Guessing Game
+2. Exchange calculator [in-progress]
 
 ## Technology
 
-Donec dolor lacus, consequat ac tortor vitae, egestas ultricies felis:
+Technologies used in the projects:
 
-- [AngularJS] - HTML enhanced for web apps!
-- [markdown-it] - Markdown parser done right. Fast and easy to extend.
+- [Python] - This on is obvious, right? :bowtie:
+- [markdown-it] - It's not popular in the IT world, but I like to create documentation :boom:
 
 
-## Installation
+## Running applications
 
-Install the dependencies and devDependencies and start the server.
-
-Steps:
-```sh
-cd PythonChallenge
-python run
-```
+Each project is different so to run the project you have to take a look into the README 
+file included in the each project localization.
 
 
 ## Challenge contributors
 
-am ultricies mauris a dolor euismod, quis tincidunt quam viverra. In luctus elit in pharetra feugiat:
+Right now there are few other users that are also following
 
-| Plugin | README |
+| Conributor | Programming language |
 | ------ | ------ |
-| First | [google][G1] |
-| Second | [google][G2] |
+| [dirishere] | Python |
+| [banmi] | C# |
 
 ## License
 
@@ -45,8 +39,6 @@ TODO
 **TODO**
 
    [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [AngularJS]: <http://angularjs.org>
-
-
-   [G1]: <https://www.google.com>
-   [G2]: <https://www.google.com>
+   [Python]: <https://www.python.org/>
+   [dirishere]: <https://github.com/dirishere/PythonChallenges>
+   [banmi]: <https://github.com/banmi/Challenge1>

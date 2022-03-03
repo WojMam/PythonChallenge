@@ -31,6 +31,14 @@ def get_given_currency_by_code(code):
             return currency
 
 
+def get_all_currencies_codes():
+    currencies_codes = []
+    for currency in get_all_exchange_rates():
+        if currency['code'] is not None:
+            currencies_codes.append(currency['code'])
+    return currencies_codes
+
+
 def get_given_currency_rate_by_code(code):
     return get_given_currency_by_code(code)['mid']
 
@@ -38,3 +46,4 @@ def get_given_currency_rate_by_code(code):
 if __name__ == "__main__":
     print(get_given_currency_by_code('EUR'))
     print(get_given_currency_rate_by_code('EUR'))
+    print(get_all_currencies_codes())

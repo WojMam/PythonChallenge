@@ -35,7 +35,6 @@ class Utils:
         )
 
         self.console.print(table)
-        print("Possible Actions: table, calculate, help, exit")
 
     def close_application(self):
         config.APPLICATION_STATE = False

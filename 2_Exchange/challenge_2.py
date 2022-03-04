@@ -6,44 +6,10 @@ User can use this application to:
     - Calculate the exchange rates
 """
 
-
-import requests
-import json
-
-
-def get_gold_price():
-    response = requests.get('http://api.nbp.pl/api/cenyzlota?format=json')
-    data = response.text
-    parse_json = json.loads(data)
-    return parse_json[0]['cena']
-
-
-def get_all_exchange_rates():
-    response = requests.get('http://api.nbp.pl/api/exchangerates/tables/a?format=json')
-    data = response.text
-    parse_json = json.loads(data)
-    return parse_json[0]['rates']
-
-
-def get_given_currency_by_code(code):
-    for currency in get_all_exchange_rates():
-        if currency['code'] == code:
-            return currency
-
-
-def get_all_currencies_codes():
-    currencies_codes = []
-    for currency in get_all_exchange_rates():
-        if currency['code'] is not None:
-            currencies_codes.append(currency['code'])
-    return currencies_codes
-
-
-def get_given_currency_rate_by_code(code):
-    return get_given_currency_by_code(code)['mid']
-
+from tableA import *
 
 if __name__ == "__main__":
-    print(get_given_currency_by_code('EUR'))
-    print(get_given_currency_rate_by_code('EUR'))
-    print(get_all_currencies_codes())
+    table_a = TableA()
+    print(table_a.get_given_currency_by_code('EUR'))
+    print(table_a.get_given_currency_rate_by_code('EUR'))
+    print(table_a.get_all_currencies_codes())

@@ -1,11 +1,9 @@
 import json
-
 import requests
+import config
 
 
 class TableA:
-    TABLE_URI = 'http://api.nbp.pl/api/exchangerates/tables/a?format=json'
-
     def get_all_currencies_codes(self):
         currencies_codes = []
         for currency in self.get_all_exchange_rates():
@@ -14,7 +12,7 @@ class TableA:
         return currencies_codes
 
     def get_all_exchange_rates(self):
-        response = requests.get(self.TABLE_URI)
+        response = requests.get(config.TABLE_URI)
         data = response.text
         parse_json = json.loads(data)
         return parse_json[0]['rates']

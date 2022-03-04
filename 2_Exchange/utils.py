@@ -1,5 +1,7 @@
+import config
 from rich.table import Table
 from rich.console import Console
+
 
 
 def show_welcome_msg():
@@ -7,13 +9,10 @@ def show_welcome_msg():
 
 
 class Utils:
-    APPLICATION_STATE = True
-    POSSIBLE_ACTIONS = ['table', 'calculate', 'help']
-
     console = Console()
 
     def valid_user_input(self, user_input):
-        if user_input in self.POSSIBLE_ACTIONS:
+        if user_input in config.POSSIBLE_ACTIONS:
             return True
         else:
             return False
@@ -31,12 +30,15 @@ class Utils:
         table.add_row(
             "help", "Show this beautiful table."
         )
+        table.add_row(
+            "exit", "Close the application."
+        )
 
         self.console.print(table)
-        print("Possible Actions: table, calculate, help")
+        print("Possible Actions: table, calculate, help, exit")
 
     def close_application(self):
-        self.APPLICATION_STATE = False
+        config.APPLICATION_STATE = False
 
     def pretty_print_json(self, json_object, crop=False):
         self.console.print(json_object)

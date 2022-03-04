@@ -15,13 +15,15 @@ def choose_action(user_input):
         print(utils.pretty_print_json(table_a.get_all_exchange_rates()))
     elif user_input == 'calculate':
         print("I will do the calculation next time, ok?")
+    elif user_input == 'exit':
+        utils.close_application()
     else:
         utils.show_help_information()
 
 
 def exchange_calculator():
     show_welcome_msg()
-    while utils.APPLICATION_STATE:
+    while config.APPLICATION_STATE:
         print("What you want to do?")
         user_input = input(f"Input: ")
         if utils.valid_user_input(user_input):

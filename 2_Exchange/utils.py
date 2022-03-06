@@ -11,7 +11,7 @@ def start_application():
     show_welcome_msg()
     while config.APPLICATION_STATE:
         print("What you want to do?")
-        user_input = input("Input: ")
+        user_input = input("Input: ").lower()
         if valid_user_input_main_menu(user_input):
             choose_action(user_input)
         else:

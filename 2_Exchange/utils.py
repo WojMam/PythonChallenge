@@ -21,16 +21,24 @@ def start_application():
 def start_exchange_calculator():
     config.EXCHANGE_CALCULATOR_STATE = True
     while config.EXCHANGE_CALCULATOR_STATE:
+        print("You can always stop calculator and get back to menu by typing 'menu'.")
         print("Which currency you want to use for calculation?")
         user_input_currency = input("Currency code: ")
+        if user_input_currency == "menu":
+            config.EXCHANGE_CALCULATOR_STATE = False
+            break
         if valid_user_input_for_exchange_currency_code(user_input_currency):
             while config.EXCHANGE_CALCULATOR_STATE:
                 print("How much polish zlotys You want to exchange?")
                 try:
-                    user_input_money_ammount = int(input("Ammount of PLN: "))
+                    user_input_money_ammount = input("Ammount of PLN: ")
+                    if user_input_money_ammount.lower() == "menu":
+                        config.EXCHANGE_CALCULATOR_STATE = False
+                        break
+                    money_ammount = int(user_input_money_ammount)
                     calculation_result = tableA.calculate_exchange_rate(
                         tableA.get_given_currency_rate_by_code(
-                            user_input_currency), user_input_money_ammount)
+                            user_input_currency), money_ammount)
                     print(f"The result of exchange would be: {calculation_result}")
                     config.EXCHANGE_CALCULATOR_STATE = False
                 except ValueError:

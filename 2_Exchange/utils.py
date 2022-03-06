@@ -23,7 +23,7 @@ def start_exchange_calculator():
     while config.EXCHANGE_CALCULATOR_STATE:
         print("You can always stop calculator and get back to menu by typing 'menu'.")
         print("Which currency you want to use for calculation?")
-        user_input_currency = input("Currency code: ")
+        user_input_currency = input("Currency code: ").upper()
         if user_input_currency == "menu":
             config.EXCHANGE_CALCULATOR_STATE = False
             break

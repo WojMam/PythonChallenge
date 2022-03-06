@@ -29,4 +29,4 @@ def get_given_currency_rate_by_code(code):
 
 
 def calculate_exchange_rate(currency_rate, user_ammount):
-    return currency_rate * user_ammount
+    return user_ammount / currency_rate

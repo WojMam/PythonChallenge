@@ -1,7 +1,7 @@
 import config
 from rich.table import Table
 from rich.console import Console
-import tableA
+import tableA, gold
 
 
 console = Console()
@@ -19,6 +19,7 @@ def start_application():
 
 
 def start_exchange_calculator():
+    config.EXCHANGE_CALCULATOR_STATE = True
     while config.EXCHANGE_CALCULATOR_STATE:
         print("Which currency you want to use for calculation?")
         user_input_currency = input("Currency code: ")
@@ -45,9 +46,11 @@ def show_welcome_msg():
 
 def choose_action(user_input):
     if user_input == 'table':
-        print(pretty_print_json(tableA.get_all_exchange_rates()))
+        pretty_print_json(tableA.get_all_exchange_rates())
     elif user_input == 'calculate':
         start_exchange_calculator()
+    elif user_input == 'gold':
+        pretty_print_json(gold.get_gold_price())
     elif user_input == 'exit':
         close_application()
     else:
@@ -91,13 +94,16 @@ def show_help_information():
         "help", "Show this beautiful table."
     )
     table.add_row(
+        "gold", "Show gold price."
+    )
+    table.add_row(
         "exit", "Close the application."
     )
 
     console.print(table)
 
 
-def pretty_print_json(json_object, crop=False):
+def pretty_print_json(json_object):
     console.print(json_object)
 
 

@@ -1,7 +1,7 @@
 import config
 from rich.table import Table
 from rich.console import Console
-import tableA, gold
+import average_exchange_rates, gold
 
 
 console = Console()
@@ -21,7 +21,7 @@ def start_application():
 def start_exchange_calculator():
     config.EXCHANGE_CALCULATOR_STATE = True
     print("Possible currencies codes that can be used for calculation:")
-    print(tableA.get_all_currencies_codes())
+    print(average_exchange_rates.get_all_currencies_codes())
     while config.EXCHANGE_CALCULATOR_STATE:
         print("You can always stop calculator and get back to menu by typing 'menu'.")
         print("Which currency you want to use for calculation?")
@@ -38,8 +38,8 @@ def start_exchange_calculator():
                         config.EXCHANGE_CALCULATOR_STATE = False
                         break
                     money_ammount = int(user_input_money_ammount)
-                    calculation_result = tableA.calculate_exchange_rate(
-                        tableA.get_given_currency_rate_by_code(
+                    calculation_result = average_exchange_rates.calculate_exchange_rate(
+                        average_exchange_rates.get_given_currency_rate_by_code(
                             user_input_currency), money_ammount)
                     print(f"The result of exchange would be: {calculation_result}")
                     config.EXCHANGE_CALCULATOR_STATE = False
@@ -47,7 +47,7 @@ def start_exchange_calculator():
                     print("Your ammount was not a number! Please use a number.")
         else:
             print("Sorry, we don't support this currency code. Please try again. Possible codes:")
-            print(tableA.get_all_currencies_codes())
+            print(average_exchange_rates.get_all_currencies_codes())
 
 
 def show_welcome_msg():
@@ -57,7 +57,7 @@ def show_welcome_msg():
 
 def choose_action(user_input):
     if user_input == 'table':
-        pretty_print_json(tableA.get_all_exchange_rates())
+        pretty_print_json(average_exchange_rates.get_all_exchange_rates())
     elif user_input == 'calculate':
         start_exchange_calculator()
     elif user_input == 'gold':
@@ -85,7 +85,7 @@ def valid_user_input_for_exchange_money_ammount(user_input):
 
 
 def valid_user_input_for_exchange_currency_code(user_input):
-    if user_input in tableA.get_all_currencies_codes():
+    if user_input in average_exchange_rates.get_all_currencies_codes():
         return True
     else:
         return False

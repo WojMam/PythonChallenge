@@ -20,6 +20,8 @@ def start_application():
 
 def start_exchange_calculator():
     config.EXCHANGE_CALCULATOR_STATE = True
+    print("Possible currencies codes that can be used for calculation:")
+    print(tableA.get_all_currencies_codes())
     while config.EXCHANGE_CALCULATOR_STATE:
         print("You can always stop calculator and get back to menu by typing 'menu'.")
         print("Which currency you want to use for calculation?")

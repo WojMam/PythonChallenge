@@ -50,6 +50,7 @@ def start_exchange_calculator():
 
 def show_welcome_msg():
     print("Welcome")
+    show_help_information()
 
 
 def choose_action(user_input):
